@@ -22,7 +22,7 @@ func register(args []string) {
 	ns := getArg(args[1], "--ns")
 
 	if ns == "" {
-		return 
+		return
 	}
 
 	script := getArg(args[2], "--script")

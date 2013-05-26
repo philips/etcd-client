@@ -44,7 +44,7 @@ func addValue(nameSpcae string, key []string, value []string) {
 
 	for i := 0; i < len(key); i++ {
 		fmt.Println(key[i], " ", value[i])
-		c.Set("/" + nameSpcae + "/" + key[i], rev, []byte(value[i]))
+		c.Set(pathPrefix + nameSpcae + "/" + key[i], rev, []byte(value[i]))
     }
 
 }

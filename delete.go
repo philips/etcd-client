@@ -34,7 +34,7 @@ func deleteValue(nameSpcae string, key []string) {
 	}
 
 	for i := 0; i < len(key); i++ {
-		c.Del("/" + nameSpcae + "/" + key[i], rev)
+		c.Del(pathPrefix + nameSpcae + "/" + key[i], rev)
     }
 
 }
