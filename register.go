@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/ioutil"
+	"fmt"
 
 )
 
@@ -53,7 +54,13 @@ func register(args []string) {
 		redoScriptStr = "true"
 	}
 
-	c.Set("/" + string(mid) + "/" + ns + "/" + script, rev, 
+	newRev, err := c.Set("/" + string(mid) + "/" + ns + "/" + script, rev, 
 		[]byte(log + "," + redoScriptStr))
+
+	if err != nil {
+		bail(err)
+	}
+
+	fmt.Println(newRev)
 
 }
