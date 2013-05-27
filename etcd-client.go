@@ -10,6 +10,8 @@ import (
 	"strconv"
 )
 
+const pathPrefix = "/etcd/"
+
 var (
 	uri         = flag.String("a", "doozer:?ca=127.0.0.1:8046", "the address to bind to")
 	buri        = flag.String("b", "", "the DzNS uri")
