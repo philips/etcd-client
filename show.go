@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	)
 
 func init() {
@@ -35,9 +36,11 @@ func showValue(nameSpcae string, key []string) {
 
 		if len(b) == 0 {
 			fmt.Println(key[i], " Not Found")
+			os.Exit(1)
+
 		} else {
 			fmt.Println(key[i], string(b))
 		}
     }
-
+    os.Exit(0)
 }
