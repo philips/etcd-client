@@ -2,7 +2,9 @@ package main
 
 import (
 	"io/ioutil"
-
+	"io"
+	"crypto/md5"
+	"fmt"
 )
 
 func init() {
@@ -38,5 +40,8 @@ func deregister(args []string) {
 		panic(err)
 	}
 
-	c.Del("/" + string(mid) + "/" + ns + "/" + script, rev)
+	h := md5.New()
+	io.WriteString(h, script)
+
+	c.Del("/" + string(mid) + "/" + ns + "/" + fmt.Sprintf("%x", h.Sum(nil)), rev)
 }

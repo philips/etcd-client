@@ -2,8 +2,9 @@ package main
 
 import (
 	"io/ioutil"
+	"io"
 	"fmt"
-
+	"crypto/md5"
 )
 
 func init() {
@@ -54,8 +55,11 @@ func register(args []string) {
 		redoScriptStr = "true"
 	}
 
-	newRev, err := c.Set("/" + string(mid) + "/" + ns + "/" + script, rev, 
-		[]byte(log + "," + redoScriptStr))
+	h := md5.New()
+	io.WriteString(h, script)
+
+	newRev, err := c.Set("/" + string(mid) + "/" + ns + "/" + fmt.Sprintf("%x", h.Sum(nil)), rev, 
+		[]byte(script + "," + log + "," + redoScriptStr))
 
 	if err != nil {
 		bail(err)
