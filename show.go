@@ -28,7 +28,7 @@ func showValue(nameSpcae string, key []string) {
 
 	for i := 0; i < len(key); i++ {
 		
-		b, _, err := c.Get("/" + nameSpcae + "/" + key[i], nil)
+		b, _, err := c.Get(pathPrefix + nameSpcae + "/" + key[i], nil)
 		if err != nil {
 			bail(err)
 		}
