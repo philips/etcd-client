@@ -36,7 +36,7 @@ func showValue(nameSpcae string, key []string) {
 		if len(b) == 0 {
 			fmt.Println(key[i], " Not Found")
 		} else {
-			fmt.Println(key[i], "[", string(b), "]")
+			fmt.Println(key[i], string(b))
 		}
     }
 
