@@ -21,6 +21,11 @@ func register(args []string) {
 		panic(err)
 	}
 
+	if len(args) < 3 {
+		fmt.Println("Wrong number of args")
+		return
+	}
+
 	ns := getArg(args[1], "--ns")
 
 	if ns == "" {
@@ -32,11 +37,19 @@ func register(args []string) {
 	if script == "" {
 		return
 	}
- 
-	log := getArg(args[3], "--log")
+ 		
+ 	var log string 
 
-	if log =="" {
-		return
+ 	// log file provided
+ 	if len(args) > 3 {
+
+		log = getArg(args[3], "--log")
+
+		if log =="" {
+			return
+		}
+	} else {
+		log =""
 	}
 
 	mid, err := ioutil.ReadFile("/etc/machine-id")
